@@ -5,7 +5,7 @@ const WHATSAPP_NUMBER = "5561993694651";
 const BASE_PRODUCTS = [
   {
     id: "time",
-    name: "Caneca Times Mascote",
+    name: "Coleção Times Mascote",
     price: 29.99,
     imgs: [
       "./assets/times-mascote/13.png",
@@ -36,7 +36,7 @@ const BASE_PRODUCTS = [
   },
   {
     id: "bocao",
-    name: "Canecas Bocão",
+    name: "Coleção Bocão",
     price: 39.99,
     imgs: [
            "./assets/canecas-bocao/2.png",
@@ -86,14 +86,29 @@ const BASE_PRODUCTS = [
     ]
   },
   {
-    id: "aniver",
-    name: "Caneca Aniversário",
-    price: 44.90,
-    imgs: ["./assets/caneca-aniversario.png", "./assets/caneca-aniversario-2.png"],
-    desc: "Data + mensagem especial para presentear.",
+    id: "dia-maes",
+    name: "Coleção Dia das Mães",
+    price: 29.99,
+    imgs: [ 
+          "./assets/dia-maes/26.png",
+          "./assets/dia-maes/27.png",
+          "./assets/dia-maes/28.png",
+          "./assets/dia-maes/29.png",
+          "./assets/dia-maes/30.png",
+          "./assets/dia-maes/31.png"
+          ,],
+     desc: "",
+    modelImageMap: {
+      "Opção 1": 0,
+      "Opção 2": 1,
+      "Opção 3": 2,
+      "Opção 4": 3,
+      "Opção 5": 4,
+      "Opção 6": 5
+    },
     variations: [
-      { name: "Tamanho", options: ["325ml", "500ml"] },
-      { name: "Cor do fundo", options: ["Branca", "Rosa", "Dourada"] }
+      { name: "Tamanho", options: ["325ml"] },
+      { name: "Modelo", options: ["Opção 1", "Opção 2", "Opção 3", "Opção 4", "Opção 5", "Opção 6"] }
     ]
   },
   {
@@ -124,42 +139,33 @@ const BASE_PRODUCTS = [
 // Produtos base
 const BASE_PRODUCTS2 = [
   {
-    id: "time",
-    name: "Caneca Times - Nome e Número",
+    id: "dindo",
+    name: "Caneca Dindo e Dinda",
     price: 29.99,
     imgs: [
-      "./assets/sao-paulo.png",
-      "./assets/flamengo.png",
-      "./assets/flamengo2.png",
-      "./assets/vasco.png",
-      "./assets/santos.png",
-      "./assets/palmeiras.png",
-      "./assets/corinthians.png"
+      "./assets/diversos/dindo.png",
+      "./assets/diversos/dindo.png"
     ],
-    desc: "Escolha o modelo do time, nome e número.",
+    desc: "",
     modelImageMap: {
-      "São Paulo": 0,
-      "Flamengo": 1,
-      "Flamengo 2": 2,
-      "Vasco": 3,
-      "Santos": 4,
-      "Palmeiras": 5,
-      "Corinthians": 6
+      "Dinda": 0,
+      "Dindo": 1,
     },
     variations: [
       { name: "Tamanho", options: ["325ml"] },
-      { name: "Modelo", options: ["São Paulo", "Flamengo", "Flamengo 2", "Vasco", "Santos", "Palmeiras", "Corinthians"] }
+      { name: "Modelo", options: ["Dindo", "Dinda"] }
     ]
   },
   {
-    id: "foto",
-    name: "Caneca com Foto",
-    price: 44.90,
-    imgs: ["./assets/caneca-foto.png", "./assets/caneca-foto-2.png"],
-    desc: "Envie a foto no WhatsApp para personalizar.",
+    id: "harry-potter",
+    name: "Caneca Harry Potter Alça Coração",
+    price: 37.99,
+    imgs: [
+      "./assets/diversos/harry-potter.png",
+    ],
+    desc: "",
     variations: [
-      { name: "Tamanho", options: ["325ml", "500ml"] },
-      { name: "Acabamento", options: ["Brilhante", "Fosco"] }
+      { name: "Tamanho", options: ["325ml"] }
     ]
   },
   {

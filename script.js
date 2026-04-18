@@ -48,14 +48,14 @@ const BASE_PRODUCTS = [
     ],
     desc: "",
     modelImageMap: {
-      "Stich": 1,
-      "Angel": 2,
-      "Capivara": 3,
-      "Gato": 4,
-      "Goku": 5,
-      "Vegeta": 6,
-      "Simba": 7,
-      "Shrek": 8
+      "Stich": 0,
+      "Angel": 1,
+      "Capivara": 2,
+      "Gato": 3,
+      "Goku": 4,
+      "Vegeta": 5,
+      "Simba": 6,
+      "Shrek": 7
     },
     variations: [
       { name: "Tamanho", options: ["325ml"] },

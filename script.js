@@ -5,30 +5,33 @@ const WHATSAPP_NUMBER = "5561993694651";
 const BASE_PRODUCTS = [
   {
     id: "time",
-    name: "Caneca Times Nome e Número",
+    name: "Caneca Times Mascote",
     price: 29.99,
     imgs: [
-      "./assets/sao-paulo.png",
-      "./assets/flamengo.png",
-      "./assets/flamengo2.png",
-      "./assets/vasco.png",
-      "./assets/santos.png",
-      "./assets/palmeiras.png",
-      "./assets/corinthians.png"
+      "./assets/times-mascote/13.png",
+      "./assets/times-mascote/14.png",
+      "./assets/times-mascote/15.png",
+      "./assets/times-mascote/16.png",
+      "./assets/times-mascote/17.png",
+      "./assets/times-mascote/19.png",
+      "./assets/times-mascote/23.png",
+      "./assets/times-mascote/22.png",
+
     ],
     desc: "",
     modelImageMap: {
-      "São Paulo": 0,
+      "Vasco": 0,
       "Flamengo": 1,
-      "Flamengo 2": 2,
-      "Vasco": 3,
-      "Santos": 4,
-      "Palmeiras": 5,
-      "Corinthians": 6
+      "Atletico MG": 2,
+      "Botafogo": 3,
+      "Corinthians": 4,
+      "Fluminense": 5,
+      "São Paulo": 6,
+      "Palmeiras": 7
     },
     variations: [
       { name: "Tamanho", options: ["325ml"] },
-      { name: "Modelo", options: ["São Paulo", "Flamengo", "Flamengo 2", "Vasco", "Santos", "Palmeiras", "Corinthians"] }
+      { name: "Modelo", options: ["Vasco", "Flamengo", "Atletico MG", "Botafogo", "Corinthians", "Fluminense", "São Paulo", "Palmeiras"] }
     ]
   },
   {
@@ -65,7 +68,7 @@ const BASE_PRODUCTS = [
   {
     id: "seja-forte",
     name: "Canecas Seja Forte",
-    price: 39.99,
+    price: 29.99,
     imgs: ["./assets/canecas-seja-forte/1.png",
            "./assets/canecas-seja-forte/2.png",
            "./assets/canecas-seja-forte/3.png",

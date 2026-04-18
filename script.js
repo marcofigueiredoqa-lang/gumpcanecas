@@ -67,7 +67,7 @@ const BASE_PRODUCTS = [
   },
   {
     id: "seja-forte",
-    name: "Canecas Seja Forte",
+    name: "Coleção Seja Forte",
     price: 29.99,
     imgs: ["./assets/canecas-seja-forte/1.png",
            "./assets/canecas-seja-forte/2.png",
@@ -111,33 +111,24 @@ const BASE_PRODUCTS = [
       { name: "Modelo", options: ["Opção 1", "Opção 2", "Opção 3", "Opção 4", "Opção 5", "Opção 6"] }
     ]
   },
-  {
-    id: "casal",
-    name: "Kit Casal (2 canecas)",
-    price: 79.90,
-    imgs: ["./assets/caneca-casal.png", "./assets/caneca-casal-2.png"],
-    desc: "Duas canecas combinando. Ideal para presente.",
-    variations: [
-      { name: "Tamanho", options: ["325ml", "500ml"] },
-      { name: "Tema", options: ["Romântico", "Divertido", "Minimalista"] }
-    ]
-  },
-  {
-    id: "corp",
-    name: "Caneca Corporativa",
-    price: 49.90,
-    imgs: ["./assets/caneca-corporativa.png", "./assets/caneca-corporativa-2.png"],
-    desc: "Para empresas e eventos (desconto por quantidade).",
-    variations: [
-      { name: "Tamanho", options: ["325ml", "500ml", "1L"] },
-      { name: "Acabamento", options: ["Brilhante", "Fosco"] },
-      { name: "Quantidade", options: ["1–9 unid.", "10–29 unid.", "30+ unid."] }
-    ]
-  }
+
 ];
 
 // Produtos base
 const BASE_PRODUCTS2 = [
+  {
+    id: "sua-arte",
+    name: "Caneca Personalizada",
+    price: 29.99,
+    imgs: [
+      "./assets/diversos/sua-arte.png"
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] },
+
+    ]
+  },
   {
     id: "dindo",
     name: "Caneca Dindo e Dinda",
@@ -159,7 +150,7 @@ const BASE_PRODUCTS2 = [
   {
     id: "harry-potter",
     name: "Caneca Harry Potter Alça Coração",
-    price: 37.99,
+    price: 37.90,
     imgs: [
       "./assets/diversos/harry-potter.png",
     ],
@@ -169,51 +160,73 @@ const BASE_PRODUCTS2 = [
     ]
   },
   {
-    id: "nome",
-    name: "Caneca com Nome + Frase",
-    price: 42.90,
-    imgs: ["./assets/caneca-nome.png", "./assets/caneca-nome-2.png", "./assets/caneca-nome-3.png"],
-    desc: "Nome, frase e cores do seu jeito.",
+    id: "spider",
+    name: "Caneca Homem-Aranha",
+    price: 37.90,
+    imgs: ["./assets/diversos/spider-vermelho.png",
+           "./assets/diversos/spider-preto.png",
+           "./assets/diversos/spider-branca.png"
+    ],
+    desc: "",
+    modelImageMap: {
+      "Vermelho": 0,
+      "Preto": 1,
+      "Branco": 2
+    },
     variations: [
-      { name: "Tamanho", options: ["325ml", "500ml"] },
-      { name: "Cor do fundo", options: ["Branca", "Rosa", "Azul", "Roxa", "Preta"] },
-      { name: "Acabamento", options: ["Brilhante", "Fosco"] }
+      { name: "Tamanho", options: ["325ml"] },
+      { name: "Cor", options: ["Vermelho", "Preto", "Branco"] }
     ]
   },
   {
-    id: "aniver",
-    name: "Caneca Aniversário",
-    price: 44.90,
-    imgs: ["./assets/caneca-aniversario.png", "./assets/caneca-aniversario-2.png"],
-    desc: "Data + mensagem especial para presentear.",
+    id: "crepusculo",
+    name: "Caneca Crepusculo",
+    price: 32.90,
+    imgs: [
+      "./assets/diversos/crepusculo.png",
+    ],
+    desc: "",
     variations: [
-      { name: "Tamanho", options: ["325ml", "500ml"] },
-      { name: "Cor do fundo", options: ["Branca", "Rosa", "Dourada"] }
+      { name: "Tamanho", options: ["325ml"] }
     ]
   },
   {
-    id: "casal",
-    name: "Kit Casal (2 canecas)",
-    price: 79.90,
-    imgs: ["./assets/caneca-casal.png", "./assets/caneca-casal-2.png"],
-    desc: "Duas canecas combinando. Ideal para presente.",
+    id: "spider-miles",
+    name: "Caneca Homem-Aranha Miles",
+    price: 39.90,
+    imgs: [
+      "./assets/diversos/spider-miles.png",
+    ],
+    desc: "",
     variations: [
-      { name: "Tamanho", options: ["325ml", "500ml"] },
-      { name: "Tema", options: ["Romântico", "Divertido", "Minimalista"] }
+      { name: "Tamanho", options: ["325ml"] }
     ]
   },
-  {
-    id: "corp",
-    name: "Caneca Corporativa",
-    price: 49.90,
-    imgs: ["./assets/caneca-corporativa.png", "./assets/caneca-corporativa-2.png"],
-    desc: "Para empresas e eventos (desconto por quantidade).",
+    {
+    id: "henrique-juliano",
+    name: "Caneca Henrique e Juliano",
+    price: 37.90,
+    imgs: [
+      "./assets/diversos/henrique-juliano.png",
+    ],
+    desc: "",
     variations: [
-      { name: "Tamanho", options: ["325ml", "500ml", "1L"] },
-      { name: "Acabamento", options: ["Brilhante", "Fosco"] },
-      { name: "Quantidade", options: ["1–9 unid.", "10–29 unid.", "30+ unid."] }
+      { name: "Tamanho", options: ["325ml"] }
     ]
-  }
+  },
+   {
+    id: "taylor-swift",
+    name: "Caneca Taylor Swift",
+    price: 37.90,
+    imgs: [
+      "./assets/diversos/taylor-swift.png",
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
+  
 ];
 
 // Seções independentes

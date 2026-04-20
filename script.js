@@ -130,6 +130,53 @@ const BASE_PRODUCTS2 = [
     ]
   },
   {
+    id: "michael",
+    name: "Caneca Michael Jackson",
+    price: 29.99,
+    imgs: [
+      "./assets/diversos/michael.png",
+      "./assets/diversos/michael2.png",
+      "./assets/diversos/michael3.png",
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
+    {
+    id: "spfc",
+    name: "Caneca São Paulo FC",
+    price: 29.99,
+    imgs: [
+      "./assets/diversos/spfc.png",
+      "./assets/diversos/47.png",
+      "./assets/diversos/48.png",
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
+     {
+    id: "boyfriend",
+    name: "I love My Boyfriend ou My girlfriend",
+    price: 27.90,
+    imgs: [
+      "./assets/diversos/boy.png",
+      "./assets/diversos/girl.png",
+
+    ],
+    desc: "",
+    modelImageMap: {
+      "My Boyfriend": 0,
+      "My Girlfriend": 1,
+    },
+    variations: [
+      { name: "Tamanho", options: ["325ml"] },
+      { name: "Modelo", options: ["My Boyfriend", "My Girlfriend"] }
+    ]
+  },
+  {
     id: "dindo",
     name: "Caneca Dindo e Dinda",
     price: 29.99,
@@ -147,10 +194,34 @@ const BASE_PRODUCTS2 = [
       { name: "Modelo", options: ["Dindo", "Dinda"] }
     ]
   },
+    {
+    id: "cat-aaa",
+    name: "Caneca Cat AAAA",
+    price: 27.90,
+    imgs: [
+      "./assets/diversos/cat-aaa.png",
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
+    {
+    id: "ookemon",
+    name: "Caneca Pokémon",
+    price: 29.99,
+    imgs: [
+      "./assets/diversos/pokem.png",
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
   {
     id: "harry-potter",
     name: "Caneca Harry Potter Alça Coração",
-    price: 37.90,
+    price: 39.90,
     imgs: [
       "./assets/diversos/harry-potter.png",
     ],
@@ -226,6 +297,43 @@ const BASE_PRODUCTS2 = [
       { name: "Tamanho", options: ["325ml"] }
     ]
   },
+   {
+    id: "tse-tung",
+    name: "Tsé Tung - Bolsonaro - Lula - Manoel Gomes",
+    price: 29.99,
+    imgs: [
+      "./assets/tse-tung/bolsonaro.png",
+      "./assets/tse-tung/lula.png",
+      "./assets/tse-tung/xandao.png",
+      "./assets/tse-tung/manuel.png"
+
+    ],
+    desc: "",
+    modelImageMap: {
+      "Bolsonaro": 0,
+      "Lula": 1,
+      "Xandão": 2,
+      "Manuel Gomes": 3
+    },
+    variations: [
+      { name: "Tamanho", options: ["325ml"] },
+      { name: "Modelo", options: ["Bolsonaro", "Lula", "Xandão", "Manuel Gomes"] }
+    ]
+  },
+
+  {
+    id: "sonserina",
+    name: "Caneca Sonserina",
+    price: 29.99,
+    imgs: [
+      "./assets/diversos/sonserina.png",
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
+    
   
 ];
 

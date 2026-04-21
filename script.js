@@ -34,6 +34,33 @@ const BASE_PRODUCTS = [
       { name: "Modelo", options: ["Vasco", "Flamengo", "Atletico MG", "Botafogo", "Corinthians", "Fluminense", "São Paulo", "Palmeiras"] }
     ]
   },
+    {
+    id: "time-nome",
+    name: "Coleção Times Nome e Número",
+    price: 29.99,
+    imgs: [
+      "./assets/times-mascote/flamengo.png",
+      "./assets/times-mascote/vasco.png",
+      "./assets/times-mascote/corinthians.png",
+      "./assets/times-mascote/sao-paulo.png",
+      "./assets/times-mascote/santos.png",
+      "./assets/times-mascote/palmeiras.png"
+
+    ],
+    desc: "",
+    modelImageMap: {
+      "Flamengo": 0,
+      "Vasco": 1,
+      "Corinthians": 2,
+      "São Paulo": 3,
+      "Santos": 4,
+      "Palmeiras": 5
+    },
+    variations: [
+      { name: "Tamanho", options: ["325ml"] },
+      { name: "Modelo", options: ["Flamengo", "Vasco", "Corinthians", "São Paulo", "Santos", "Palmeiras"] }
+    ]
+  },
   {
     id: "bocao",
     name: "Coleção Bocão",
@@ -149,8 +176,71 @@ const BASE_PRODUCTS2 = [
     price: 29.99,
     imgs: [
       "./assets/diversos/spfc.png",
-      "./assets/diversos/47.png",
-      "./assets/diversos/48.png",
+      "./assets/diversos/spfc2.png",
+      "./assets/diversos/spfc3.png",
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
+  {
+    id: "cereja",
+    name: "Caneca Cereja",
+    price: 29.99,
+    imgs: [
+      "./assets/diversos/cereja.png",
+      "./assets/diversos/cereja2.png",
+      "./assets/diversos/cereja3.png",
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
+  {
+    id: "gatos",
+    name: "Caneca Memes de Gato",
+    price: 29.99,
+    imgs: [
+      "./assets/diversos/gatos.png",
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
+  {
+    id: "fofoca",
+    name: "Caneca Fofoca Aceito",
+    price: 29.99,
+    imgs: [
+      "./assets/diversos/fofoca.png",
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
+  {
+    id: "paciencia",
+    name: "Caneca Instalando Minha Paciência",
+    price: 29.99,
+    imgs: [
+      "./assets/diversos/paciencia.png",
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
+  {
+    id: "the-last",
+    name: "Caneca The Last of Us",
+    price: 29.99,
+    imgs: [
+      "./assets/diversos/the-last.png",
+      "./assets/diversos/the-last2.png",
     ],
     desc: "",
     variations: [

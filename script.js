@@ -198,6 +198,20 @@ const BASE_PRODUCTS2 = [
       { name: "Tamanho", options: ["325ml"] }
     ]
   },
+    {
+    id: "maezona",
+    name: "Caneca Mãezona",
+    price: 29.99,
+    imgs: [
+      "./assets/diversos/maezona2.png",
+      "./assets/diversos/maezona.png"
+      
+    ],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] }
+    ]
+  },
   {
     id: "gatos",
     name: "Caneca Memes de Gato",

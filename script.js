@@ -448,6 +448,10 @@ const ALL_PRODUCTS = [...SECTION1_PRODUCTS, ...SECTION2_PRODUCTS];
 
 let cart = loadCart();
 let cartNotes = localStorage.getItem("gump_cart_notes") || "";
+let activeCoupon = localStorage.getItem("gump_active_coupon") || null;
+const COUPONS = {
+  "GUMP10": 0.10
+};
 
 const elGrid       = document.getElementById("productGrid");
 const elGrid2      = document.getElementById("productGrid2");
@@ -455,6 +459,12 @@ const elCartCount  = document.getElementById("cartCount");
 const elDrawer     = document.getElementById("drawer");
 const elCartItems  = document.getElementById("cartItems");
 const elSubtotal   = document.getElementById("subtotal");
+const elSubtotalBeforeDiscount = document.getElementById("subtotalBeforeDiscount");
+const elDiscountRow = document.getElementById("discountRow");
+const elDiscountValue = document.getElementById("discountValue");
+const elCouponCode = document.getElementById("couponCode");
+const elApplyCoupon = document.getElementById("applyCoupon");
+const elCouponMessage = document.getElementById("couponMessage");
 const elCartNotes  = document.getElementById("cartNotes");
 const elSearch     = document.getElementById("search");
 const elSearch2    = document.getElementById("search2");
@@ -472,6 +482,18 @@ function cartSubtotal(){
     const p = ALL_PRODUCTS.find(x=>x.uniqueId===item.uniqueId);
     return sum + (p ? p.price * (Number(item?.qty) || 0) : 0);
   },0);
+}
+function getDiscount(){
+  if(!activeCoupon || !COUPONS[activeCoupon]) return 0;
+  return cartSubtotal() * COUPONS[activeCoupon];
+}
+function cartTotal(){
+  return Math.max(cartSubtotal() - getDiscount(), 0);
+}
+function setCouponMessage(message, type = ""){
+  if(!elCouponMessage) return;
+  elCouponMessage.textContent = message || "";
+  elCouponMessage.className = `coupon-message ${type ? `coupon-message--${type}` : ""}`.trim();
 }
 function getVariationImageIndex(product, variations = {}){
   if(product?.modelImageMap && variations?.["Modelo"] in product.modelImageMap){
@@ -532,7 +554,13 @@ function buildWhatsMessage(){
   });
 
   lines.push("");
-  lines.push(`Subtotal: ${brl(cartSubtotal())}`);
+  if(getDiscount() > 0){
+    lines.push(`Subtotal: ${brl(cartSubtotal())}`);
+    lines.push(`Cupom: ${activeCoupon} (-${brl(getDiscount())})`);
+    lines.push(`Total com desconto: ${brl(cartTotal())}`);
+  } else {
+    lines.push(`Subtotal: ${brl(cartSubtotal())}`);
+  }
   lines.push("Entrega: a combinar");
   lines.push("");
 
@@ -594,7 +622,16 @@ function renderCart(){
       btn.addEventListener("click",()=>{ setQty(btn.getAttribute("data-remove"),0); });
     });
   }
-  elSubtotal.textContent = brl(cartSubtotal());
+  const discount = getDiscount();
+  if(elSubtotalBeforeDiscount) elSubtotalBeforeDiscount.textContent = brl(cartSubtotal());
+  if(elDiscountRow) elDiscountRow.style.display = discount > 0 ? "flex" : "none";
+  if(elDiscountValue) elDiscountValue.textContent = `- ${brl(discount)}`;
+  elSubtotal.textContent = brl(cartTotal());
+
+  if(elCouponCode && activeCoupon){
+    elCouponCode.value = activeCoupon;
+    setCouponMessage(`Cupom ${activeCoupon} aplicado: 10% de desconto.`, "success");
+  }
 }
 
 function sortList(list, sortValue){
@@ -857,6 +894,38 @@ elSort.addEventListener("change", renderProducts);
 if(elSearch2) elSearch2.addEventListener("input", renderProducts);
 if(elSort2) elSort2.addEventListener("change", renderProducts);
 elCartNotes.addEventListener("input",()=>{ cartNotes=elCartNotes.value||""; localStorage.setItem("gump_cart_notes",cartNotes); });
+
+if(elApplyCoupon){
+  elApplyCoupon.addEventListener("click",()=>{
+    const code = (elCouponCode?.value || "").trim().toUpperCase();
+
+    if(!code){
+      activeCoupon = null;
+      localStorage.removeItem("gump_active_coupon");
+      setCouponMessage("Digite um cupom para aplicar.", "error");
+      renderCart();
+      return;
+    }
+
+    if(COUPONS[code]){
+      activeCoupon = code;
+      localStorage.setItem("gump_active_coupon", activeCoupon);
+      setCouponMessage(`Cupom ${code} aplicado: 10% de desconto.`, "success");
+    }else{
+      activeCoupon = null;
+      localStorage.removeItem("gump_active_coupon");
+      setCouponMessage("Cupom inválido.", "error");
+    }
+
+    renderCart();
+  });
+}
+
+if(elCouponCode){
+  elCouponCode.addEventListener("keydown",(e)=>{
+    if(e.key === "Enter") elApplyCoupon?.click();
+  });
+}
 
 renderProducts();
 renderCart();

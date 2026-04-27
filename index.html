@@ -188,12 +188,35 @@
 
         <div class="cart__notes">
           <label class="label">Observações do pedido (personalização, cores, etc.)</label>
-          <textarea class="input" id="cartNotes" rows="4" placeholder="Ex.: Caneca com nome 'Mariana', cor roxa, frase '...'. Para caneca com foto, vou enviar no WhatsApp."></textarea>
+          <textarea class="input" id="cartNotes" rows="4" placeholder="Ex.: Caneca com nome 'Mariana...'."></textarea>
         </div>
 
         <div class="cart__summary">
+          <div class="coupon-box">
+            <label class="label">Cupom de desconto</label>
+            <div class="coupon-row">
+              <input
+                type="text"
+                id="couponCode"
+                class="input"
+                placeholder=""
+                autocomplete="off"
+              />
+              <button id="applyCoupon" class="btn btn--ghost" type="button">Aplicar</button>
+            </div>
+            <div class="coupon-message" id="couponMessage"></div>
+          </div>
+
           <div class="row">
             <span class="muted">Subtotal</span>
+            <strong id="subtotalBeforeDiscount">R$ 0,00</strong>
+          </div>
+          <div class="row" id="discountRow" style="display:none;">
+            <span class="muted">Desconto</span>
+            <strong id="discountValue">- R$ 0,00</strong>
+          </div>
+          <div class="row row--total">
+            <span>Total</span>
             <strong id="subtotal">R$ 0,00</strong>
           </div>
           <div class="row">

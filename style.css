@@ -683,3 +683,137 @@ h3{margin:0 0 8px}
   .coupon-row{grid-template-columns:1fr;}
   .coupon-row .btn{width:100%;}
 }
+
+/* Melhorias de conversão e usabilidade */
+.trust-list{
+  display:grid;
+  gap:8px;
+  margin:14px 0;
+}
+.trust-list span{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  max-width:100%;
+  padding:7px 10px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:#fff;
+  font-size:13px;
+  font-weight:700;
+  color:var(--fg);
+}
+
+.promo-strip{
+  padding:14px 0;
+  background:linear-gradient(90deg, rgba(255,46,166,.12), rgba(244,180,0,.15));
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.promo-strip__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.promo-strip__inner div{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.promo-strip__inner strong{
+  color:var(--brand);
+  font-size:18px;
+}
+.promo-strip__inner span{
+  color:var(--muted);
+  font-weight:600;
+}
+
+.btn--more{
+  display:block;
+  margin:22px auto 0;
+  min-width:180px;
+}
+.btn--more[hidden]{display:none;}
+
+/* Mostra a caneca inteira no card, sem cortar a arte */
+.gallery__img{
+  object-fit:contain;
+  background:#f3f4f6;
+}
+
+.card-tags{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:5px;
+}
+.card-tags span{
+  font-size:11px;
+  font-weight:800;
+  color:var(--brand);
+  background:rgba(75,29,138,.08);
+  border-radius:999px;
+  padding:3px 8px;
+}
+
+.cart-item__personalization{
+  margin-top:6px;
+  font-size:12px;
+  color:var(--fg);
+  background:#f9fafb;
+  border:1px dashed var(--border);
+  border-radius:10px;
+  padding:7px 8px;
+}
+.modal-personalization{
+  display:grid;
+  gap:6px;
+}
+
+.floating-whats{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  z-index:70;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 16px;
+  border-radius:999px;
+  background:#25d366;
+  color:#fff;
+  font-weight:900;
+  box-shadow:0 14px 34px rgba(0,0,0,.22);
+  border:2px solid rgba(255,255,255,.85);
+}
+.floating-whats:hover{filter:brightness(.97)}
+
+@media (max-width:480px){
+  .footer{padding-bottom:78px;}
+  .trust-list span{width:100%;}
+}
+
+/* No mobile, o WhatsApp fica discreto: apenas um botão redondo com ícone */
+@media (max-width: 600px){
+  .floating-whats{
+    width:54px;
+    height:54px;
+    right:14px;
+    bottom:14px;
+    left:auto;
+    padding:0;
+    border-radius:50%;
+    font-size:0;
+    gap:0;
+  }
+
+  .floating-whats::before{
+    content:"💬";
+    font-size:24px;
+    line-height:1;
+  }
+}

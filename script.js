@@ -3,6 +3,34 @@ const WHATSAPP_NUMBER = "5561993694651";
 
 // Produtos base
 const BASE_PRODUCTS = [
+
+  {
+    id: "dia-maes",
+    name: "Coleção Dia das Mães",
+    price: 29.99,
+    imgs: [ 
+          "./assets/dia-maes/26.png",
+          "./assets/dia-maes/27.png",
+          "./assets/dia-maes/28.png",
+          "./assets/dia-maes/29.png",
+          "./assets/dia-maes/30.png",
+          "./assets/dia-maes/31.png"
+          ,],
+     desc: "",
+    modelImageMap: {
+      "Opção 1": 0,
+      "Opção 2": 1,
+      "Opção 3": 2,
+      "Opção 4": 3,
+      "Opção 5": 4,
+      "Opção 6": 5
+    },
+    variations: [
+      { name: "Tamanho", options: ["325ml"] },
+      { name: "Modelo", options: ["Opção 1", "Opção 2", "Opção 3", "Opção 4", "Opção 5", "Opção 6"] }
+    ]
+  },
+  
   {
     id: "time",
     name: "Coleção Times Mascote",
@@ -112,32 +140,7 @@ const BASE_PRODUCTS = [
       { name: "Modelo", options: ["Justin Bieber", "Luan Santana", "Virginia"] }
     ]
   },
-  {
-    id: "dia-maes",
-    name: "Coleção Dia das Mães",
-    price: 29.99,
-    imgs: [ 
-          "./assets/dia-maes/26.png",
-          "./assets/dia-maes/27.png",
-          "./assets/dia-maes/28.png",
-          "./assets/dia-maes/29.png",
-          "./assets/dia-maes/30.png",
-          "./assets/dia-maes/31.png"
-          ,],
-     desc: "",
-    modelImageMap: {
-      "Opção 1": 0,
-      "Opção 2": 1,
-      "Opção 3": 2,
-      "Opção 4": 3,
-      "Opção 5": 4,
-      "Opção 6": 5
-    },
-    variations: [
-      { name: "Tamanho", options: ["325ml"] },
-      { name: "Modelo", options: ["Opção 1", "Opção 2", "Opção 3", "Opção 4", "Opção 5", "Opção 6"] }
-    ]
-  },
+  
 
 ];
 
@@ -446,6 +449,22 @@ const SECTION1_PRODUCTS = structuredClone(BASE_PRODUCTS).map(p => ({ ...p, secti
 const SECTION2_PRODUCTS = structuredClone(BASE_PRODUCTS2).map(p => ({ ...p, sectionKey: "s2", uniqueId: `s2-${p.id}` }));
 const ALL_PRODUCTS = [...SECTION1_PRODUCTS, ...SECTION2_PRODUCTS];
 
+// Descrições curtas para deixar os cards mais vendedores
+ALL_PRODUCTS.forEach(product => {
+  if(product.desc && product.desc.trim()) return;
+
+  const name = product.name.toLowerCase();
+  if(name.includes("mãe") || name.includes("maes") || name.includes("mães")){
+    product.desc = "Presente especial para emocionar com nome, frase ou foto.";
+  } else if(name.includes("time") || name.includes("fc")){
+    product.desc = "Caneca temática 325ml para torcer ou presentear.";
+  } else if(name.includes("personalizada") || name.includes("sua arte")){
+    product.desc = "Envie sua ideia, nome, frase ou foto e personalize do seu jeito.";
+  } else {
+    product.desc = "Caneca 325ml personalizada, ideal para presente criativo.";
+  }
+});
+
 let cart = loadCart();
 let cartNotes = localStorage.getItem("gump_cart_notes") || "";
 let activeCoupon = localStorage.getItem("gump_active_coupon") || null;
@@ -455,6 +474,8 @@ const COUPONS = {
 
 const elGrid       = document.getElementById("productGrid");
 const elGrid2      = document.getElementById("productGrid2");
+const elShowMore1  = document.getElementById("showMore1");
+const elShowMore2  = document.getElementById("showMore2");
 const elCartCount  = document.getElementById("cartCount");
 const elDrawer     = document.getElementById("drawer");
 const elCartItems  = document.getElementById("cartItems");
@@ -472,6 +493,8 @@ const elSort       = document.getElementById("sort");
 const elSort2      = document.getElementById("sort2");
 const elCustomerName = document.getElementById("customerName");
 const elCustomerObs  = document.getElementById("customerObs");
+const PRODUCT_LIMIT = 18;
+let sectionExpanded = { s1: false, s2: false };
 
 function brl(v){ return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"}); }
 function saveCart(){ localStorage.setItem("gump_cart", JSON.stringify(cart)); }
@@ -505,15 +528,27 @@ function getCartItemImage(product, variations = {}){
   const idx = getVariationImageIndex(product, variations);
   return product.imgs?.[idx] || product.imgs?.[0] || "";
 }
+function escapeHtml(value){
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 function openDrawer(){ elDrawer.classList.add("show"); elDrawer.setAttribute("aria-hidden","false"); }
 function closeDrawer(){ elDrawer.classList.remove("show"); elDrawer.setAttribute("aria-hidden","true"); }
 
-function addToCart(uniqueId, variations){
-  const key = uniqueId + (variations ? "__" + Object.entries(variations).map(([k,v])=>`${k}:${v}`).join("|") : "");
+function addToCart(uniqueId, variations, personalization = ""){
+  const cleanPersonalization = (personalization || "").trim();
+  const variationKey = variations ? Object.entries(variations).map(([k,v])=>`${k}:${v}`).join("|") : "";
+  const personalizationKey = cleanPersonalization ? `__personalizacao:${cleanPersonalization}` : "";
+  const key = `${uniqueId}__${variationKey}${personalizationKey}`;
   if(cart[key]){
     cart[key].qty++;
   } else {
-    cart[key] = { uniqueId, qty: 1, variations: variations || {} };
+    cart[key] = { uniqueId, qty: 1, variations: variations || {}, personalization: cleanPersonalization };
   }
   saveCart();
   renderCart();
@@ -542,15 +577,19 @@ function buildWhatsMessage(){
   lines.push("Olá! Quero fazer um pedido na Gump Canecas ☕");
   if(name) lines.push(`Nome: ${name}`);
   lines.push("");
-  lines.push("Itens:");
+  lines.push("Itens do pedido:");
 
   Object.entries(cart).forEach(([key,item],idx)=>{
     const p = ALL_PRODUCTS.find(x=>x.uniqueId===item.uniqueId);
     if(!p) return;
-    let line = `${idx+1}) ${p.name} — ${item.qty}x (${brl(p.price)})`;
     const vars = Object.entries(item.variations||{});
-    if(vars.length) line += ` | ${vars.map(([k,v])=>`${k}: ${v}`).join(", ")}`;
-    lines.push(line);
+
+    lines.push("");
+    lines.push(`${idx+1}) Produto: ${p.name}`);
+    lines.push(`Quantidade: ${item.qty}`);
+    lines.push(`Valor unitário: ${brl(p.price)}`);
+    if(vars.length) lines.push(`Variações: ${vars.map(([k,v])=>`${k}: ${v}`).join(", ")}`);
+    if(item.personalization) lines.push(`Personalização: ${item.personalization}`);
   });
 
   lines.push("");
@@ -559,14 +598,14 @@ function buildWhatsMessage(){
     lines.push(`Cupom: ${activeCoupon} (-${brl(getDiscount())})`);
     lines.push(`Total com desconto: ${brl(cartTotal())}`);
   } else {
-    lines.push(`Subtotal: ${brl(cartSubtotal())}`);
+    lines.push(`Total: ${brl(cartSubtotal())}`);
   }
   lines.push("Entrega: a combinar");
   lines.push("");
 
   const obsBlock = [obsTop,notes].filter(Boolean).join(" | ");
-  if(obsBlock){ lines.push("Observações:"); lines.push(obsBlock); lines.push(""); }
-  lines.push("Pode me passar as opções de pagamento e prazo?");
+  if(obsBlock){ lines.push("Observações gerais:"); lines.push(obsBlock); lines.push(""); }
+  lines.push("Pode confirmar o prazo e a forma de pagamento?");
   return lines.join("\n");
 }
 
@@ -599,14 +638,15 @@ function renderCart(){
                 <strong>${p.name}</strong>
                 <div class="small muted">${brl(p.price)} • cada</div>
                 <div class="small muted">${p.sectionKey === "s1" ? "Seção 1" : "Seção 2"}</div>
-                ${vars.length ? `<div class="cart-item__vars">${vars.map(([k,v])=>`<span class="var-tag">${k}: ${v}</span>`).join("")}</div>` : ""}
+                ${vars.length ? `<div class="cart-item__vars">${vars.map(([k,v])=>`<span class="var-tag">${escapeHtml(k)}: ${escapeHtml(v)}</span>`).join("")}</div>` : ""}
+                ${item.personalization ? `<div class="cart-item__personalization"><strong>Personalização:</strong> ${escapeHtml(item.personalization)}</div>` : ""}
               </div>
-              <button class="icon-btn" data-remove="${key}" aria-label="Remover">🗑️</button>
+              <button class="icon-btn" data-remove="${escapeHtml(key)}" aria-label="Remover">🗑️</button>
             </div>
             <div class="qty">
-              <button data-dec="${key}" aria-label="Diminuir">−</button>
+              <button data-dec="${escapeHtml(key)}" aria-label="Diminuir">−</button>
               <span>${item.qty}</span>
-              <button data-inc="${key}" aria-label="Aumentar">+</button>
+              <button data-inc="${escapeHtml(key)}" aria-label="Aumentar">+</button>
             </div>
           </div>
         </div>`;
@@ -632,6 +672,20 @@ function renderCart(){
     elCouponCode.value = activeCoupon;
     setCouponMessage(`Cupom ${activeCoupon} aplicado: 10% de desconto.`, "success");
   }
+}
+
+function productSearchText(product){
+  const variationText = (product.variations || [])
+    .flatMap(group => [group.name, ...(group.options || [])])
+    .join(" ");
+  return `${product.name} ${product.desc} ${variationText}`.toLowerCase();
+}
+
+function renderShowMoreButton(button, fullList, sectionKey){
+  if(!button) return;
+  const shouldShow = fullList.length > PRODUCT_LIMIT;
+  button.hidden = !shouldShow;
+  button.textContent = sectionExpanded[sectionKey] ? "Ver menos" : "Ver mais";
 }
 
 function sortList(list, sortValue){
@@ -661,13 +715,13 @@ function buildCardsHtml(list, suffix=""){
         <div class="card__title">
           <div>
             <strong>${p.name}</strong>
-            <div class="small">Personalizada</div>
+            <div class="card-tags"><span>Personalizável</span><span>325ml</span></div>
           </div>
           <div class="price">${brl(p.price)}</div>
         </div>
         <p class="card__desc muted">${p.desc}</p>
         <div class="card__actions">
-          <button class="btn" data-checkout="${p.uniqueId}">Adicionar ao carrinho</button>
+          <button class="btn" data-checkout="${p.uniqueId}">Ver detalhes</button>
         </div>
       </div>
     </article>
@@ -678,14 +732,20 @@ function renderProducts(){
   const q1 = (elSearch?.value||"").trim().toLowerCase();
   const q2 = (elSearch2?.value||"").trim().toLowerCase();
 
-  let list1 = SECTION1_PRODUCTS.filter(p=> (p.name+" "+p.desc).toLowerCase().includes(q1));
-  let list2 = SECTION2_PRODUCTS.filter(p=> (p.name+" "+p.desc).toLowerCase().includes(q2));
+  let list1 = SECTION1_PRODUCTS.filter(p=> productSearchText(p).includes(q1));
+  let list2 = SECTION2_PRODUCTS.filter(p=> productSearchText(p).includes(q2));
 
   list1 = sortList(list1, elSort?.value||"featured");
   list2 = sortList(list2, elSort2?.value||"featured");
 
-  if(elGrid) elGrid.innerHTML = buildCardsHtml(list1, "");
-  if(elGrid2) elGrid2.innerHTML = buildCardsHtml(list2, "");
+  renderShowMoreButton(elShowMore1, list1, "s1");
+  renderShowMoreButton(elShowMore2, list2, "s2");
+
+  const visibleList1 = sectionExpanded.s1 ? list1 : list1.slice(0, PRODUCT_LIMIT);
+  const visibleList2 = sectionExpanded.s2 ? list2 : list2.slice(0, PRODUCT_LIMIT);
+
+  if(elGrid) elGrid.innerHTML = buildCardsHtml(visibleList1, "");
+  if(elGrid2) elGrid2.innerHTML = buildCardsHtml(visibleList2, "");
 
   document.querySelectorAll("[data-prev-gallery]").forEach(btn=>{
     btn.addEventListener("click",()=>{
@@ -754,6 +814,7 @@ function openProductModal(uniqueId){
   const modalDesc  = document.getElementById("modalDesc");
   const modalVars  = document.getElementById("modalVariations");
   const modalQty   = document.getElementById("modalQty");
+  const modalPersonalization = document.getElementById("modalPersonalization");
 
   modalImg.src = p.imgs[0];
   modalImg.alt = p.name;
@@ -788,6 +849,7 @@ function openProductModal(uniqueId){
   modalPrice.textContent = brl(p.price);
   modalDesc.textContent  = p.desc;
   modalQty.textContent   = "1";
+  if(modalPersonalization) modalPersonalization.value = "";
 
   modalVars.innerHTML = p.variations.map(varGroup=>`
     <div class="var-group">
@@ -799,6 +861,15 @@ function openProductModal(uniqueId){
       </div>
     </div>
   `).join("");
+
+  // Seleciona automaticamente variações com opção única, como Tamanho 325ml.
+  p.variations.forEach(varGroup => {
+    if((varGroup.options || []).length === 1){
+      selectedVars[varGroup.name] = varGroup.options[0];
+      const singleBtn = modalVars.querySelector(`.var-option[data-var-name="${varGroup.name}"]`);
+      if(singleBtn) singleBtn.classList.add("active");
+    }
+  });
 
   modalVars.querySelectorAll(".var-option").forEach(btn=>{
     btn.addEventListener("click",()=>{
@@ -830,7 +901,7 @@ function openProductModal(uniqueId){
       highlightMissing(missing);
       return;
     }
-    for(let i=0;i<qtyVal;i++) addToCart(p.uniqueId, {...selectedVars});
+    for(let i=0;i<qtyVal;i++) addToCart(p.uniqueId, {...selectedVars}, modalPersonalization?.value || "");
     closeProductModal();
   };
 
@@ -879,7 +950,7 @@ document.getElementById("btnBudget").addEventListener("click",()=>{
   openWhatsApp("Olá! Quero um orçamento de caneca personalizada ☕\n\nPode me dar mais detalhes sobre valores e prazos?");
 });
 
-["btnWhatsHeader","btnWhatsFooter"].forEach(id=>{
+["btnWhatsHeader","btnWhatsFooter","floatingWhats"].forEach(id=>{
   const el = document.getElementById(id);
   if(!el) return;
   el.addEventListener("click",(e)=>{ e.preventDefault(); openWhatsApp("Olá! Vim pela landing page da Gump Canecas ☕"); });
@@ -889,10 +960,12 @@ document.getElementById("modalBackdrop").addEventListener("click", closeProductM
 document.getElementById("modalClose").addEventListener("click", closeProductModal);
 document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") closeProductModal(); });
 
-elSearch.addEventListener("input", renderProducts);
-elSort.addEventListener("change", renderProducts);
-if(elSearch2) elSearch2.addEventListener("input", renderProducts);
-if(elSort2) elSort2.addEventListener("change", renderProducts);
+elSearch.addEventListener("input",()=>{ sectionExpanded.s1 = false; renderProducts(); });
+elSort.addEventListener("change",()=>{ sectionExpanded.s1 = false; renderProducts(); });
+if(elSearch2) elSearch2.addEventListener("input",()=>{ sectionExpanded.s2 = false; renderProducts(); });
+if(elSort2) elSort2.addEventListener("change",()=>{ sectionExpanded.s2 = false; renderProducts(); });
+if(elShowMore1) elShowMore1.addEventListener("click",()=>{ sectionExpanded.s1 = !sectionExpanded.s1; renderProducts(); });
+if(elShowMore2) elShowMore2.addEventListener("click",()=>{ sectionExpanded.s2 = !sectionExpanded.s2; renderProducts(); });
 elCartNotes.addEventListener("input",()=>{ cartNotes=elCartNotes.value||""; localStorage.setItem("gump_cart_notes",cartNotes); });
 
 if(elApplyCoupon){

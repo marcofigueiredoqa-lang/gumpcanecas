@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gump Canecas — Personalizadas</title>
-  <meta name="description" content="Landing page da Gump Canecas: escolha uma caneca e finalize seu pedido pelo WhatsApp."/>
+  <title>Gump Canecas | Canecas Personalizadas por R$ 29,99</title>
+  <meta name="description" content="Canecas personalizadas com nome, foto e frase por R$ 29,99. Escolha seu modelo e finalize pelo WhatsApp com a Gump Canecas."/>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -33,20 +33,26 @@
     <section class="hero">
       <div class="container hero__grid">
         <div>
-          <span class="pill">Personalizadas • Entrega rápida • Presente perfeito</span>
-          <h1>Escolha sua caneca e finalize pelo WhatsApp ☕</h1>
+          <span class="pill">Canecas personalizadas por R$ 29,99 • Presente perfeito</span>
+          <h1>Canecas personalizadas por R$ 29,99 ☕</h1>
           <p class="muted">
-            Modelos prontos e personalizados com nome, frase, foto, datas e temas.
-            Clique em uma caneca para adicionar ao carrinho e finalizar o pedido.
+            Escolha seu modelo, personalize com nome, frase ou foto e finalize o pedido pelo WhatsApp.
+            Ideal para presentear, vender lembranças e criar algo único.
           </p>
 
           <div class="hero__cta">
-            <a class="btn" href="#produtos">Ver canecas</a>
+            <a class="btn" href="#produtos">Ver modelos disponíveis</a>
             <button class="btn btn--ghost" id="btnBudget">Pedir orçamento</button>
           </div>
 
+          <div class="trust-list">
+            <span>✅ Arte enviada para aprovação</span>
+            <span>✅ Personalização com nome, foto ou frase</span>
+            <span>✅ Atendimento direto pelo WhatsApp</span>
+          </div>
+
           <div class="note">
-            <strong>Dica:</strong> no carrinho, você pode escrever as observações (ex.: nome que vai na caneca).
+            <strong>Dica:</strong> escolha uma caneca e preencha a personalização no próprio produto.
           </div>
         </div>
 
@@ -71,6 +77,16 @@
       </div>
     </section>
 
+    <section class="promo-strip" aria-label="Especial Dia das Mães">
+      <div class="container promo-strip__inner">
+        <div>
+          <strong>Especial Dia das Mães 💐</strong>
+          <span>Canecas personalizadas com nome, foto ou frase por R$ 29,99.</span>
+        </div>
+        <a class="btn btn--ghost" href="#produtos">Ver modelos</a>
+      </div>
+    </section>
+
     <section id="produtos" class="section">
       <div class="container">
         <div class="section__head">
@@ -87,10 +103,11 @@
         </div>
 
         <div class="grid" id="productGrid"></div>
+        <button class="btn btn--more" id="showMore1" type="button" hidden>Ver mais</button>
+        <noscript>
+          <div class="empty">Ative o JavaScript do navegador para visualizar as canecas e usar o carrinho.</div>
+        </noscript>
       </div>
-    </section>
-
-    
     </section>
 
     <section id="mais-produtos" class="section section--alt">
@@ -109,6 +126,10 @@
         </div>
 
         <div class="grid" id="productGrid2"></div>
+        <button class="btn btn--more" id="showMore2" type="button" hidden>Ver mais</button>
+        <noscript>
+          <div class="empty">Ative o JavaScript do navegador para visualizar as canecas e usar o carrinho.</div>
+        </noscript>
       </div>
     </section>
 
@@ -127,7 +148,7 @@
             <div class="step__num">2</div>
             <div>
               <h3>Personalize</h3>
-              <p class="muted">Escolha tamanho, cor, acabamento e escreva a personalização.</p>
+              <p class="muted">Escolha o modelo e escreva a personalização de cada caneca.</p>
             </div>
           </div>
           <div class="step">
@@ -259,6 +280,12 @@
 
           <div id="modalVariations" class="modal-variations"></div>
 
+          <div class="modal-personalization">
+            <label class="label" for="modalPersonalization">Personalização desta caneca</label>
+            <textarea class="input" id="modalPersonalization" rows="3" placeholder="Ex.: Nome, frase, data, cor de fundo ou ideia da arte"></textarea>
+            <small class="small">Se tiver foto, envie pelo WhatsApp após finalizar o pedido.</small>
+          </div>
+
           <div class="modal-qty">
             <span class="label">Quantidade</span>
             <div class="qty">
@@ -277,6 +304,8 @@
       </div>
     </div>
   </div>
+
+  <a class="floating-whats" id="floatingWhats" href="#" aria-label="Chamar no WhatsApp">💬 Chamar no WhatsApp</a>
 
   <script src="script.js"></script>
 </body>

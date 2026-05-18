@@ -1,4 +1,4 @@
-/* Gump Canecas Landing - estilos */
+/* Gump Personalizados Landing - estilos */
 :root{
   --bg:#ffffff;
   --fg:#111827;
@@ -34,7 +34,11 @@ a{color:inherit;text-decoration:none}
 }
 .topbar__inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
 .brand{display:flex; align-items:center; gap:10px}
-.logo{height:44px; width:auto; display:block}
+.logo{
+  height:100px;
+  width:auto;
+  display:block;
+}
 
 .nav{display:none; gap:14px; color:var(--muted); font-weight:600}
 .nav a:hover{color:var(--fg)}
@@ -165,7 +169,7 @@ h3{margin:0 0 8px}
   width:100%;
   aspect-ratio:4/3;
   overflow:hidden;
-  background:#f3f4f6;
+  background:#fff;
 }
 .gallery__track{
   position:relative;
@@ -176,7 +180,9 @@ h3{margin:0 0 8px}
   position:absolute;
   inset:0;
   width:100%; height:100%;
-  object-fit:cover;
+  object-fit:contain;
+  padding:12px;
+  background:#fff;
   opacity:0;
   transition:opacity .28s ease;
 }
@@ -289,7 +295,7 @@ h3{margin:0 0 8px}
   border-radius:16px;
   padding:10px;
 }
-.cart-item img{width:64px; height:64px; border-radius:12px; object-fit:cover; background:#f3f4f6}
+.cart-item img{width:64px; height:64px; border-radius:12px; object-fit:contain; background:#fff; padding:4px}
 .cart-item__top{display:flex; justify-content:space-between; gap:10px}
 .cart-item__vars{display:flex; flex-wrap:wrap; gap:4px; margin-top:5px;}
 .var-tag{
@@ -377,12 +383,12 @@ h3{margin:0 0 8px}
   position:relative;
   border-radius:16px;
   overflow:hidden;
-  background:#f3f4f6;
+  background:#fff;
   aspect-ratio:4/3;
 }
 .modal-gallery__main img{
   width:100%; height:100%;
-  object-fit:cover;
+  object-fit:contain;
   display:block;
   transition:opacity .2s;
 }
@@ -401,10 +407,10 @@ h3{margin:0 0 8px}
   border:2px solid var(--border);
   cursor:pointer;
   padding:0;
-  background:#f3f4f6;
+  background:#fff;
   transition:border-color .15s;
 }
-.modal-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+.modal-thumb img{width:100%; height:100%; object-fit:contain; display:block; background:#fff;}
 .modal-thumb.active{border-color:var(--brand);}
 .modal-thumb:hover{border-color:rgba(75,29,138,.4);}
 
@@ -521,7 +527,7 @@ h3{margin:0 0 8px}
     aspect-ratio:1 / 1;
     border-radius:18px;
     overflow:hidden;
-    background:#f3f4f6;
+    background:#fff;
   }
 
   .modal-gallery__main img{
@@ -529,7 +535,7 @@ h3{margin:0 0 8px}
     height:100%;
     object-fit:contain;
     display:block;
-    background:#f3f4f6;
+    background:#fff;
   }
 
   .modal-gallery__thumbs{
@@ -554,7 +560,7 @@ h3{margin:0 0 8px}
   .modal-thumb img{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:contain;
     display:block;
   }
 
@@ -741,7 +747,7 @@ h3{margin:0 0 8px}
 /* Mostra a caneca inteira no card, sem cortar a arte */
 .gallery__img{
   object-fit:contain;
-  background:#f3f4f6;
+  background:#fff;
 }
 
 .card-tags{

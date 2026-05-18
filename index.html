@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gump Canecas | Canecas Personalizadas por R$ 29,99</title>
-  <meta name="description" content="Canecas personalizadas com nome, foto e frase por R$ 29,99. Escolha seu modelo e finalize pelo WhatsApp com a Gump Canecas."/>
+  <title>Gump Personalizados | Canecas e Garrafas Personalizadas</title>
+  <meta name="description" content="Canecas, garrafas e produtos personalizados com nome, foto e frase. Escolha seu modelo e finalize pelo WhatsApp com a Gump Personalizados."/>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="container topbar__inner">
       <a class="brand" href="#">
-        <img class="logo" src="./assets/logo.png" alt="Gump Canecas" />
+        <img class="logo" src="./assets/logo.png" alt="Gump Personalizados" />
       </a>
 
       <nav class="nav">
-        <a href="#produtos">Canecas</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#duvidas">Dúvidas</a>
+        <a href="#produtos">Coleções</a>
+        <a href="#mais-produtos">Temáticas</a>
+        <a href="#modelos-caneca">Modelos</a>
+        <a href="#canecas-chopp">Chopp</a>
+        <a href="#garrafas">Garrafas</a>
       </nav>
 
       <div class="topbar__actions">
@@ -33,15 +35,15 @@
     <section class="hero">
       <div class="container hero__grid">
         <div>
-          <span class="pill">Canecas personalizadas por R$ 29,99 • Presente perfeito</span>
-          <h1>Canecas personalizadas por R$ 29,99 ☕</h1>
+          <span class="pill">Canecas e garrafas personalizadas • Presente perfeito</span>
+          <h1>Gump Personalizados: presentes únicos para todos os momentos ✨</h1>
           <p class="muted">
-            Escolha seu modelo, personalize com nome, frase ou foto e finalize o pedido pelo WhatsApp.
-            Ideal para presentear, vender lembranças e criar algo único.
+            Escolha seu produto, personalize com nome, frase ou foto e finalize o pedido pelo WhatsApp.
+            Ideal para presentear, montar lembranças e criar algo único.
           </p>
 
           <div class="hero__cta">
-            <a class="btn" href="#produtos">Ver modelos disponíveis</a>
+            <a class="btn" href="#modelos-caneca">Ver produtos disponíveis</a>
             <button class="btn btn--ghost" id="btnBudget">Pedir orçamento</button>
           </div>
 
@@ -52,14 +54,14 @@
           </div>
 
           <div class="note">
-            <strong>Dica:</strong> escolha uma caneca e preencha a personalização no próprio produto.
+            <strong>Dica:</strong> escolha uma caneca, garrafa ou outro item e preencha a personalização no próprio produto.
           </div>
         </div>
 
         <div class="hero__card">
           <h3>Como você recebe</h3>
           <ul class="checklist">
-            <li>Escolhe as canecas e variações</li>
+            <li>Escolhe os produtos e variações</li>
             <li>Escreve a personalização</li>
             <li>Envia no WhatsApp</li>
             <li>Confirmamos artes e pagamento</li>
@@ -77,13 +79,35 @@
       </div>
     </section>
 
-    <section class="promo-strip" aria-label="Especial Dia das Mães">
+    <section class="promo-strip" aria-label="Especial Dia dos Namorados">
       <div class="container promo-strip__inner">
         <div>
-          <strong>Especial Dia das Mães 💐</strong>
-          <span>Canecas personalizadas com nome, foto ou frase por R$ 29,99.</span>
+          <strong>Especial Dia dos Namorados 💘</strong>
+          <span>Presentes personalizados com nome, foto ou frase para surpreender quem você ama.</span>
         </div>
         <a class="btn btn--ghost" href="#produtos">Ver modelos</a>
+      </div>
+    </section>
+     <section id="modelos-caneca" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Modelos de Caneca</h2>
+          <div class="filters">
+            <input class="input input--small" id="search4" placeholder="Buscar modelos (ex.: mágica, colher, coração)"/>
+            <select class="input input--small" id="sort4">
+              <option value="featured">Ordenar: destaque</option>
+              <option value="price-asc">Preço: menor</option>
+              <option value="price-desc">Preço: maior</option>
+              <option value="name-asc">Nome: A–Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid" id="productGrid4"></div>
+        <button class="btn btn--more" id="showMore4" type="button" hidden>Ver mais</button>
+        <noscript>
+          <div class="empty">Ative o JavaScript do navegador para visualizar os produtos e usar o carrinho.</div>
+        </noscript>
       </div>
     </section>
 
@@ -105,7 +129,7 @@
         <div class="grid" id="productGrid"></div>
         <button class="btn btn--more" id="showMore1" type="button" hidden>Ver mais</button>
         <noscript>
-          <div class="empty">Ative o JavaScript do navegador para visualizar as canecas e usar o carrinho.</div>
+          <div class="empty">Ative o JavaScript do navegador para visualizar os produtos e usar o carrinho.</div>
         </noscript>
       </div>
     </section>
@@ -128,7 +152,53 @@
         <div class="grid" id="productGrid2"></div>
         <button class="btn btn--more" id="showMore2" type="button" hidden>Ver mais</button>
         <noscript>
-          <div class="empty">Ative o JavaScript do navegador para visualizar as canecas e usar o carrinho.</div>
+          <div class="empty">Ative o JavaScript do navegador para visualizar os produtos e usar o carrinho.</div>
+        </noscript>
+      </div>
+    </section>
+
+    <section id="canecas-chopp" class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <h2>Canecas de Chopp</h2>
+          <div class="filters">
+            <input class="input input--small" id="search5" placeholder="Buscar chopp (ex.: transparente, jateada)"/>
+            <select class="input input--small" id="sort5">
+              <option value="featured">Ordenar: destaque</option>
+              <option value="price-asc">Preço: menor</option>
+              <option value="price-desc">Preço: maior</option>
+              <option value="name-asc">Nome: A–Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid" id="productGrid5"></div>
+        <button class="btn btn--more" id="showMore5" type="button" hidden>Ver mais</button>
+        <noscript>
+          <div class="empty">Ative o JavaScript do navegador para visualizar os produtos e usar o carrinho.</div>
+        </noscript>
+      </div>
+    </section>
+
+    <section id="garrafas" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Garrafas Personalizadas</h2>
+          <div class="filters">
+            <input class="input input--small" id="search3" placeholder="Buscar garrafas (ex.: nome, foto, 500ml)"/>
+            <select class="input input--small" id="sort3">
+              <option value="featured">Ordenar: destaque</option>
+              <option value="price-asc">Preço: menor</option>
+              <option value="price-desc">Preço: maior</option>
+              <option value="name-asc">Nome: A–Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid" id="productGrid3"></div>
+        <button class="btn btn--more" id="showMore3" type="button" hidden>Ver mais</button>
+        <noscript>
+          <div class="empty">Ative o JavaScript do navegador para visualizar os produtos e usar o carrinho.</div>
         </noscript>
       </div>
     </section>
@@ -141,14 +211,14 @@
             <div class="step__num">1</div>
             <div>
               <h3>Escolha</h3>
-              <p class="muted">Adicione as canecas ao carrinho.</p>
+              <p class="muted">Adicione os produtos ao carrinho.</p>
             </div>
           </div>
           <div class="step">
             <div class="step__num">2</div>
             <div>
               <h3>Personalize</h3>
-              <p class="muted">Escolha o modelo e escreva a personalização de cada caneca.</p>
+              <p class="muted">Escolha o modelo e escreva a personalização de cada produto.</p>
             </div>
           </div>
           <div class="step">
@@ -185,8 +255,8 @@
     <footer class="footer">
       <div class="container footer__inner">
         <div>
-          <strong>Gump Canecas</strong>
-          <p class="muted">Canecas personalizadas • DF</p>
+          <strong>Gump Personalizados</strong>
+          <p class="muted">Canecas, garrafas e personalizados • DF</p>
         </div>
         <div class="footer__actions">
           <button class="btn btn--ghost" id="btnWhatsFooter">Chamar no WhatsApp</button>
@@ -209,7 +279,7 @@
 
         <div class="cart__notes">
           <label class="label">Observações do pedido (personalização, cores, etc.)</label>
-          <textarea class="input" id="cartNotes" rows="4" placeholder="Ex.: Caneca com nome 'Mariana...'."></textarea>
+          <textarea class="input" id="cartNotes" rows="4" placeholder="Ex.: Produto com nome 'Mariana...'."></textarea>
         </div>
 
         <div class="cart__summary">
@@ -281,7 +351,7 @@
           <div id="modalVariations" class="modal-variations"></div>
 
           <div class="modal-personalization">
-            <label class="label" for="modalPersonalization">Personalização desta caneca</label>
+            <label class="label" for="modalPersonalization">Personalização deste produto</label>
             <textarea class="input" id="modalPersonalization" rows="3" placeholder="Ex.: Nome, frase, data, cor de fundo ou ideia da arte"></textarea>
             <small class="small">Se tiver foto, envie pelo WhatsApp após finalizar o pedido.</small>
           </div>

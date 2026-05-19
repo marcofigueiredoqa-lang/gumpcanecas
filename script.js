@@ -1156,3 +1156,47 @@ if(elCouponCode){
 
 renderProducts();
 renderCart();
+
+
+document.querySelectorAll("[data-hero-open]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const uniqueId = btn.getAttribute("data-hero-open");
+    openProductModal(uniqueId);
+  });
+});
+
+
+(function initFeaturedCarousel(){
+  const carousel = document.querySelector('[data-featured-carousel]');
+  if(!carousel) return;
+
+  const track = carousel.querySelector('.featured-products');
+  const prev = carousel.querySelector('.featured-carousel__arrow--prev');
+  const next = carousel.querySelector('.featured-carousel__arrow--next');
+  const items = Array.from(carousel.querySelectorAll('.featured-product'));
+  const visible = 2;
+  let index = 0;
+
+  function update(){
+    const itemWidth = items[0]?.getBoundingClientRect().width || 0;
+    const gap = parseFloat(getComputedStyle(track).gap || '0') || 0;
+    const maxIndex = Math.max(items.length - visible, 0);
+    index = Math.min(Math.max(index, 0), maxIndex);
+    track.style.transform = `translateX(-${index * (itemWidth + gap)}px)`;
+    if(prev) prev.disabled = index === 0;
+    if(next) next.disabled = index >= maxIndex;
+  }
+
+  prev?.addEventListener('click',()=>{
+    index -= visible;
+    update();
+  });
+
+  next?.addEventListener('click',()=>{
+    index += visible;
+    update();
+  });
+
+  window.addEventListener('resize', update);
+  update();
+})();

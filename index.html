@@ -51,7 +51,7 @@
       <div class="container hero__grid">
         <div>
           <span class="pill">Canecas e garrafas personalizadas • Presente perfeito</span>
-          <h1 class="hero-title">Personalizados para presentear com criatividade</h1>
+          <h1 class="hero-title">Personalizados para presentear a partir de<strong> R$ 27,99</strong></h1>
           <p class="hero-subtitle">
             Canecas, garrafas e lembranças sob medida <strong>a partir de R$ 27,99</strong>.
             Escolha o produto, envie sua ideia e finalize pelo WhatsApp.
@@ -91,23 +91,65 @@
           </div>
         </div>
 
-        <div class="hero__card">
-          <h3>Como você recebe</h3>
-          <ul class="checklist">
-            <li>Escolhe os produtos e variações</li>
-            <li>Escreve a personalização</li>
-            <li>Envia no WhatsApp</li>
-            <li>Confirmamos artes e pagamento</li>
-          </ul>
-
-          <div class="hero__mini">
-            <label class="label">Seu nome (opcional)</label>
-            <input class="input" id="customerName" placeholder="Ex.: Marco" />
-            <label class="label">Observações gerais (opcional)</label>
-            <textarea class="input" id="customerObs" rows="4" placeholder="Ex.: Quero com a frase '...' e fundo roxo"></textarea>
+        <div class="hero__card hero__card--featured">
+          <div class="featured-head">
+            <span class="featured-head__eyebrow">Mais vendidos</span>
+            <h3>Os queridinhos da Gump</h3>
+            <p>Veja os produtos que mais saem por aqui e clique para abrir os detalhes.</p>
           </div>
 
-          <button class="btn btn--full" id="btnOpenCartFromHero">Abrir carrinho</button>
+          <div class="featured-carousel" data-featured-carousel>
+            <button class="featured-carousel__arrow featured-carousel__arrow--prev" type="button" aria-label="Produtos anteriores">‹</button>
+            <div class="featured-carousel__viewport">
+              <div class="featured-products">
+            <button class="featured-product" type="button" data-hero-open="s2-sua-arte">
+              <div class="featured-product__image">
+                <img src="./assets/diversos/sua-arte.png" alt="Caneca Personalizada" />
+              </div>
+              <div class="featured-product__body">
+                <strong>Caneca Personalizada</strong>
+                <span>A partir de R$ 29,99</span>
+              </div>
+            </button>
+
+            <button class="featured-product" type="button" data-hero-open="s3-garrafa-infantil">
+              <div class="featured-product__image">
+                <img src="./assets/tipos_canecas/10.png" alt="Garrafa Infantil Personalizada" />
+              </div>
+              <div class="featured-product__body">
+                <strong>Garrafa Infantil Personalizada</strong>
+                <span>A partir de R$ 49,99</span>
+              </div>
+            </button>
+
+            <button class="featured-product" type="button" data-hero-open="s5-chopp-transparente">
+              <div class="featured-product__image">
+                <img src="./assets/tipos_canecas/7.png" alt="Caneca de Chopp Transparente" />
+              </div>
+              <div class="featured-product__body">
+                <strong>Caneca de Chopp Transparente</strong>
+                <span>A partir de R$ 40,00</span>
+              </div>
+            </button>
+
+            <button class="featured-product" type="button" data-hero-open="s2-boyfriend">
+              <div class="featured-product__image">
+                <img src="./assets/diversos/boy.png" alt="I love My Boyfriend ou My girlfriend" />
+              </div>
+              <div class="featured-product__body">
+                <strong>I love My Boyfriend ou My girlfriend</strong>
+                <span>A partir de R$ 27,90</span>
+              </div>
+            </button>
+              </div>
+            </div>
+            <button class="featured-carousel__arrow featured-carousel__arrow--next" type="button" aria-label="Próximos produtos">›</button>
+          </div>
+
+          <div class="featured-actions">
+            <a class="btn btn--ghost" href="#modelos-caneca">Ver todos os produtos</a>
+            <button class="btn btn--full" id="btnOpenCartFromHero">Abrir carrinho</button>
+          </div>
         </div>
       </div>
     </section>

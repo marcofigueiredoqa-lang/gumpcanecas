@@ -8,6 +8,21 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="launch-promo" role="banner" aria-label="Cupom de lançamento">
+    <div class="launch-promo__inner">
+      <strong class="launch-promo__title">🚀 PROMOÇÃO DE LANÇAMENTO:</strong>
+      <span class="launch-promo__coupon">CUPOM: GUMP10</span>
+      <span class="launch-promo__label">Oferta expira em:</span>
+      <div class="launch-promo__timer" aria-label="Cronômetro da promoção">
+        <span><b id="promoHours">23</b><small>HORAS</small></span>
+        <i>:</i>
+        <span><b id="promoMinutes">43</b><small>MIN</small></span>
+        <i>:</i>
+        <span><b id="promoSeconds">59</b><small>SEG</small></span>
+      </div>
+    </div>
+  </div>
+
   <header class="topbar">
     <div class="container topbar__inner">
       <a class="brand" href="#">
@@ -36,7 +51,7 @@
       <div class="container hero__grid">
         <div>
           <span class="pill">Canecas e garrafas personalizadas • Presente perfeito</span>
-          <h1>Gump Personalizados: presentes únicos para todos os momentos ✨</h1>
+          <h1>Personalizados a partir de 27,99</h1>
           <p class="muted">
             Escolha seu produto, personalize com nome, frase ou foto e finalize o pedido pelo WhatsApp.
             Ideal para presentear, montar lembranças e criar algo único.
@@ -376,6 +391,45 @@
   </div>
 
   <a class="floating-whats" id="floatingWhats" href="#" aria-label="Chamar no WhatsApp">💬 Chamar no WhatsApp</a>
+
+
+  <script>
+    (function(){
+      const duration = (23 * 60 * 60) + (43 * 60) + 59;
+      const storageKey = "gump_launch_promo_end";
+      const h = document.getElementById("promoHours");
+      const m = document.getElementById("promoMinutes");
+      const s = document.getElementById("promoSeconds");
+      function pad(value){ return String(value).padStart(2, "0"); }
+      function getEndTime(){
+        let end = Number(localStorage.getItem(storageKey) || 0);
+        const now = Math.floor(Date.now() / 1000);
+        if(!end || end <= now){
+          end = now + duration;
+          localStorage.setItem(storageKey, String(end));
+        }
+        return end;
+      }
+      function tick(){
+        const now = Math.floor(Date.now() / 1000);
+        let end = getEndTime();
+        let remaining = end - now;
+        if(remaining <= 0){
+          localStorage.removeItem(storageKey);
+          end = getEndTime();
+          remaining = end - now;
+        }
+        const hours = Math.floor(remaining / 3600);
+        const minutes = Math.floor((remaining % 3600) / 60);
+        const seconds = remaining % 60;
+        if(h) h.textContent = pad(hours);
+        if(m) m.textContent = pad(minutes);
+        if(s) s.textContent = pad(seconds);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
 
   <script src="script.js"></script>
 </body>

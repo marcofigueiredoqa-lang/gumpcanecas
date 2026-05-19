@@ -1055,3 +1055,111 @@ h3{margin:0 0 8px}
     font-size:16px;
   }
 }
+
+
+/* Destaque do título e preço da hero */
+.hero-title{
+  max-width:760px;
+  margin-bottom:10px;
+}
+.hero-price-title{
+  color:var(--brand);
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.hero-subtitle{
+  max-width:620px;
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.55;
+}
+.hero-subtitle strong{
+  color:var(--brand);
+  font-weight:900;
+  white-space:nowrap;
+}
+
+/* Passo a passo do pedido */
+.order-flow{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:10px;
+  margin:18px 0;
+  max-width:680px;
+}
+.order-flow__item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 10px 24px rgba(0,0,0,.045);
+  min-width:0;
+}
+.order-flow__step{
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  background:rgba(75,29,138,.10);
+  color:var(--brand);
+  font-size:13px;
+  font-weight:900;
+}
+.order-flow__item strong{
+  display:block;
+  font-size:13px;
+  line-height:1.1;
+  color:var(--fg);
+}
+.order-flow__item small{
+  display:block;
+  margin-top:3px;
+  font-size:11px;
+  line-height:1.15;
+  color:var(--muted);
+}
+
+@media (max-width: 679px){
+  .hero-title{
+    font-size:31px;
+    line-height:1.12;
+  }
+  .hero-subtitle{
+    font-size:15px;
+  }
+  .order-flow{
+    grid-template-columns:1fr;
+    gap:8px;
+    margin:16px 0;
+  }
+  .order-flow__item{
+    padding:11px 12px;
+    border-radius:14px;
+  }
+  .order-flow__step{
+    width:28px;
+    height:28px;
+    flex-basis:28px;
+    font-size:12px;
+  }
+  .order-flow__item strong{
+    font-size:14px;
+  }
+  .order-flow__item small{
+    font-size:12px;
+  }
+}
+
+@media (max-width: 679px){
+  .hero-price-title{
+    display:inline;
+  }
+}

@@ -601,7 +601,8 @@ let cart = loadCart();
 let cartNotes = localStorage.getItem("gump_cart_notes") || "";
 let activeCoupon = localStorage.getItem("gump_active_coupon") || null;
 const COUPONS = {
-  "GUMP10": 0.10
+  "GUMP10": { type: "percent", value: 0.10, label: "10% de desconto" },
+  "GUMPTI": { type: "fixed", value: 39.99, label: "R$ 39,99 de desconto" }
 };
 
 const elGrid       = document.getElementById("productGrid");
@@ -656,7 +657,17 @@ function cartSubtotal(){
 }
 function getDiscount(){
   if(!activeCoupon || !COUPONS[activeCoupon]) return 0;
-  return cartSubtotal() * COUPONS[activeCoupon];
+  const coupon = COUPONS[activeCoupon];
+  const subtotal = cartSubtotal();
+
+  if(coupon.type === "percent") return subtotal * coupon.value;
+  if(coupon.type === "fixed") return Math.min(coupon.value, subtotal);
+
+  return 0;
+}
+
+function getCouponLabel(code){
+  return COUPONS[code]?.label || "desconto aplicado";
 }
 function cartTotal(){
   return Math.max(cartSubtotal() - getDiscount(), 0);
@@ -838,7 +849,7 @@ function renderCart(){
 
   if(elCouponCode && activeCoupon){
     elCouponCode.value = activeCoupon;
-    setCouponMessage(`Cupom ${activeCoupon} aplicado: 10% de desconto.`, "success");
+    setCouponMessage(`Cupom ${activeCoupon} aplicado: ${getCouponLabel(activeCoupon)}.`, "success");
   }
 }
 
@@ -1186,7 +1197,7 @@ if(elApplyCoupon){
     if(COUPONS[code]){
       activeCoupon = code;
       localStorage.setItem("gump_active_coupon", activeCoupon);
-      setCouponMessage(`Cupom ${code} aplicado: 10% de desconto.`, "success");
+      setCouponMessage(`Cupom ${code} aplicado: ${getCouponLabel(code)}.`, "success");
     }else{
       activeCoupon = null;
       localStorage.removeItem("gump_active_coupon");

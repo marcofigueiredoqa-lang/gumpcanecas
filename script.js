@@ -520,13 +520,8 @@ const BASE_PRODUCTS6 = [
     desc: "",
     variations: [
       { name: "Tamanho", options: ["325ml"] },
-      { name: "Modelo", options: ["Com foto", "Com calendário", "Arte completa"] }
     ],
-    modelImageMap: {
-      "Com foto": 0,
-      "Com calendário": 1,
-      "Arte completa": 2
-    }
+
   },
   {
     id: "namorados-briga",
@@ -544,13 +539,7 @@ const BASE_PRODUCTS6 = [
     desc: "",
     variations: [
       { name: "Tamanho", options: ["325ml"] },
-      { name: "Modelo", options: ["Frente", "Verso", "Lateral"] }
     ],
-    modelImageMap: {
-      "Frente": 0,
-      "Verso": 1,
-      "Lateral": 2
-    }
   },
   {
     id: "namorados-spotify",

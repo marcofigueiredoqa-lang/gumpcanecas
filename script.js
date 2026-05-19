@@ -460,7 +460,7 @@ const BASE_PRODUCTS3 = [
   {
     id: "garrafa-personalizada",
     name: "Garrafa Personalizada",
-    price: 39.99,
+    price: 49.99,
     imgs: ["./assets/tipos_canecas/9.png"],
     desc: "Garrafa personalizada com nome, frase, foto ou logo. Ideal para presente, escola, academia e lembranças.",
     variations: [

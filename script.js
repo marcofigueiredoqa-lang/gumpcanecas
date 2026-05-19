@@ -9,7 +9,7 @@ const BASE_PRODUCTS4 = [
     name: "Caneca Branca",
     price: 29.99,
     imgs: ["./assets/tipos_canecas/11.png"],
-    desc: "Modelo 330ml. Unidade R$ 29,99 • 10+ unidades por R$ 25,00.",
+    desc: "",
     variations: [
       { name: "Tamanho", options: ["330ml"] },
     ]

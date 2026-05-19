@@ -61,29 +61,6 @@ const BASE_PRODUCTS4 = [
   }
 ];
 const BASE_PRODUCTS = [
-
-
-  
-
-  {
-    id: "dia-namorados",
-    name: "Coleção Dia dos Namorados",
-    price: 29.99,
-    imgs: [
-      "./assets/diversos/boy.png",
-      "./assets/diversos/girl.png"
-    ],
-    desc: "Presente romântico personalizado com nome, foto ou frase para surpreender quem você ama.",
-    modelImageMap: {
-      "Para namorado": 0,
-      "Para namorada": 1
-    },
-    variations: [
-      { name: "Tamanho", options: ["325ml"] },
-      { name: "Modelo", options: ["Para namorado", "Para namorada"] }
-    ]
-  },
-  
   {
     id: "time",
     name: "Coleção Times Mascote",
@@ -317,25 +294,6 @@ const BASE_PRODUCTS2 = [
       { name: "Tamanho", options: ["325ml"] }
     ]
   },
-     {
-    id: "boyfriend",
-    name: "I love My Boyfriend ou My girlfriend",
-    price: 27.90,
-    imgs: [
-      "./assets/diversos/boy.png",
-      "./assets/diversos/girl.png",
-
-    ],
-    desc: "",
-    modelImageMap: {
-      "My Boyfriend": 0,
-      "My Girlfriend": 1,
-    },
-    variations: [
-      { name: "Tamanho", options: ["325ml"] },
-      { name: "Modelo", options: ["My Boyfriend", "My Girlfriend"] }
-    ]
-  },
   {
     id: "dindo",
     name: "Caneca Dindo e Dinda",
@@ -550,13 +508,83 @@ const BASE_PRODUCTS5 = [
   }
 ];
 
+
+
+// Canecas Dia dos Namorados
+const BASE_PRODUCTS6 = [
+  {
+    id: "namorados-foto-data",
+    name: "Caneca Amor com Foto e Data",
+    price: 29.99,
+    imgs: ["./assets/dia-dos-namorados/namorados-1.png", "./assets/dia-dos-namorados/namorados-2.png", "./assets/dia-dos-namorados/namorados-3.png"],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] },
+      { name: "Modelo", options: ["Com foto", "Com calendário", "Arte completa"] }
+    ],
+    modelImageMap: {
+      "Com foto": 0,
+      "Com calendário": 1,
+      "Arte completa": 2
+    }
+  },
+  {
+    id: "namorados-briga",
+    name: "Caneca A Gente Briga Mas Não Separa",
+    price: 29.99,
+    imgs: ["./assets/dia-dos-namorados/namorados-4.png"],
+    desc: "",
+    variations: [{ name: "Tamanho", options: ["325ml"] }]
+  },
+  {
+    id: "namorados-momentos",
+    name: "Caneca Momentos do Casal",
+    price: 29.99,
+    imgs: ["./assets/dia-dos-namorados/namorados-5.png", "./assets/dia-dos-namorados/namorados-6.png", "./assets/dia-dos-namorados/namorados-7.png"],
+    desc: "",
+    variations: [
+      { name: "Tamanho", options: ["325ml"] },
+      { name: "Modelo", options: ["Frente", "Verso", "Lateral"] }
+    ],
+    modelImageMap: {
+      "Frente": 0,
+      "Verso": 1,
+      "Lateral": 2
+    }
+  },
+  {
+    id: "namorados-spotify",
+    name: "Caneca Spotify Casal",
+    price: 29.99,
+    imgs: ["./assets/dia-dos-namorados/namorados-8.png"],
+    desc: "",
+    variations: [{ name: "Tamanho", options: ["325ml"] }]
+  },
+  {
+    id: "boyfriend",
+    name: "I love My Boyfriend ou My Girlfriend",
+    price: 29.99,
+    imgs: ["./assets/diversos/boy.png", "./assets/diversos/girl.png"],
+    desc: "",
+    modelImageMap: {
+      "My Boyfriend": 0,
+      "My Girlfriend": 1
+    },
+    variations: [
+      { name: "Tamanho", options: ["325ml"] },
+      { name: "Modelo", options: ["My Boyfriend", "My Girlfriend"] }
+    ]
+  }
+];
+
 // Seções independentes
 const SECTION1_PRODUCTS = structuredClone(BASE_PRODUCTS).map(p => ({ ...p, sectionKey: "s1", uniqueId: `s1-${p.id}` }));
 const SECTION2_PRODUCTS = structuredClone(BASE_PRODUCTS2).map(p => ({ ...p, sectionKey: "s2", uniqueId: `s2-${p.id}` }));
 const SECTION3_PRODUCTS = structuredClone(BASE_PRODUCTS3).map(p => ({ ...p, sectionKey: "s3", uniqueId: `s3-${p.id}` }));
 const SECTION4_PRODUCTS = structuredClone(BASE_PRODUCTS4).map(p => ({ ...p, sectionKey: "s4", uniqueId: `s4-${p.id}` }));
 const SECTION5_PRODUCTS = structuredClone(BASE_PRODUCTS5).map(p => ({ ...p, sectionKey: "s5", uniqueId: `s5-${p.id}` }));
-const ALL_PRODUCTS = [...SECTION1_PRODUCTS, ...SECTION2_PRODUCTS, ...SECTION3_PRODUCTS, ...SECTION4_PRODUCTS, ...SECTION5_PRODUCTS];
+const SECTION6_PRODUCTS = structuredClone(BASE_PRODUCTS6).map(p => ({ ...p, sectionKey: "s6", uniqueId: `s6-${p.id}` }));
+const ALL_PRODUCTS = [...SECTION6_PRODUCTS, ...SECTION1_PRODUCTS, ...SECTION2_PRODUCTS, ...SECTION3_PRODUCTS, ...SECTION4_PRODUCTS, ...SECTION5_PRODUCTS];
 
 // Descrições curtas para deixar os cards mais vendedores
 ALL_PRODUCTS.forEach(product => {
@@ -592,11 +620,13 @@ const elGrid2      = document.getElementById("productGrid2");
 const elGrid3      = document.getElementById("productGrid3");
 const elGrid4      = document.getElementById("productGrid4");
 const elGrid5      = document.getElementById("productGrid5");
+const elGrid6      = document.getElementById("productGrid6");
 const elShowMore1  = document.getElementById("showMore1");
 const elShowMore2  = document.getElementById("showMore2");
 const elShowMore3  = document.getElementById("showMore3");
 const elShowMore4  = document.getElementById("showMore4");
 const elShowMore5  = document.getElementById("showMore5");
+const elShowMore6  = document.getElementById("showMore6");
 const elCartCount  = document.getElementById("cartCount");
 const elDrawer     = document.getElementById("drawer");
 const elCartItems  = document.getElementById("cartItems");
@@ -613,15 +643,17 @@ const elSearch2    = document.getElementById("search2");
 const elSearch3    = document.getElementById("search3");
 const elSearch4    = document.getElementById("search4");
 const elSearch5    = document.getElementById("search5");
+const elSearch6    = document.getElementById("search6");
 const elSort       = document.getElementById("sort");
 const elSort2      = document.getElementById("sort2");
 const elSort3      = document.getElementById("sort3");
 const elSort4      = document.getElementById("sort4");
 const elSort5      = document.getElementById("sort5");
+const elSort6      = document.getElementById("sort6");
 const elCustomerName = document.getElementById("customerName");
 const elCustomerObs  = document.getElementById("customerObs");
 const PRODUCT_LIMIT = 18;
-let sectionExpanded = { s1: false, s2: false, s3: false, s4: false, s5: false };
+let sectionExpanded = { s1: false, s2: false, s3: false, s4: false, s5: false, s6: false };
 
 function brl(v){ return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"}); }
 function saveCart(){ localStorage.setItem("gump_cart", JSON.stringify(cart)); }
@@ -655,6 +687,18 @@ function getCartItemImage(product, variations = {}){
   const idx = getVariationImageIndex(product, variations);
   return product.imgs?.[idx] || product.imgs?.[0] || "";
 }
+function getSectionName(sectionKey){
+  const map = {
+    s6: "Dia dos Namorados",
+    s1: "Canecas por coleção",
+    s2: "Canecas diversas",
+    s3: "Garrafas personalizadas",
+    s4: "Modelos de caneca",
+    s5: "Canecas de chopp"
+  };
+  return map[sectionKey] || "Produtos";
+}
+
 function escapeHtml(value){
   return String(value || "")
     .replaceAll("&", "&amp;")
@@ -663,6 +707,7 @@ function escapeHtml(value){
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
+
 
 function openDrawer(){ elDrawer.classList.add("show"); elDrawer.setAttribute("aria-hidden","false"); }
 function closeDrawer(){ elDrawer.classList.remove("show"); elDrawer.setAttribute("aria-hidden","true"); }
@@ -675,7 +720,12 @@ function addToCart(uniqueId, variations, personalization = ""){
   if(cart[key]){
     cart[key].qty++;
   } else {
-    cart[key] = { uniqueId, qty: 1, variations: variations || {}, personalization: cleanPersonalization };
+    cart[key] = {
+      uniqueId,
+      qty: 1,
+      variations: variations || {},
+      personalization: cleanPersonalization
+    };
   }
   saveCart();
   renderCart();
@@ -732,6 +782,8 @@ function buildWhatsMessage(){
 
   const obsBlock = [obsTop,notes].filter(Boolean).join(" | ");
   if(obsBlock){ lines.push("Observações gerais:"); lines.push(obsBlock); lines.push(""); }
+  lines.push("Se a personalização tiver fotos, vou enviar as imagens aqui no WhatsApp após finalizar o pedido.");
+  lines.push("");
   lines.push("Pode confirmar o prazo e a forma de pagamento?");
   return lines.join("\n");
 }
@@ -764,7 +816,7 @@ function renderCart(){
               <div>
                 <strong>${p.name}</strong>
                 <div class="small muted">${brl(p.price)} • cada</div>
-                <div class="small muted">${p.sectionKey === "s1" ? "Canecas por coleção" : p.sectionKey === "s2" ? "Canecas diversas" : p.sectionKey === "s3" ? "Garrafas personalizadas" : p.sectionKey === "s4" ? "Modelos de caneca" : "Canecas de chopp"}</div>
+                <div class="small muted">${getSectionName(p.sectionKey)}</div>
                 ${vars.length ? `<div class="cart-item__vars">${vars.map(([k,v])=>`<span class="var-tag">${escapeHtml(k)}: ${escapeHtml(v)}</span>`).join("")}</div>` : ""}
                 ${item.personalization ? `<div class="cart-item__personalization"><strong>Personalização:</strong> ${escapeHtml(item.personalization)}</div>` : ""}
               </div>
@@ -861,36 +913,42 @@ function renderProducts(){
   const q3 = (elSearch3?.value||"").trim().toLowerCase();
   const q4 = (elSearch4?.value||"").trim().toLowerCase();
   const q5 = (elSearch5?.value||"").trim().toLowerCase();
+  const q6 = (elSearch6?.value||"").trim().toLowerCase();
 
   let list1 = SECTION1_PRODUCTS.filter(p=> productSearchText(p).includes(q1));
   let list2 = SECTION2_PRODUCTS.filter(p=> productSearchText(p).includes(q2));
   let list3 = SECTION3_PRODUCTS.filter(p=> productSearchText(p).includes(q3));
   let list4 = SECTION4_PRODUCTS.filter(p=> productSearchText(p).includes(q4));
   let list5 = SECTION5_PRODUCTS.filter(p=> productSearchText(p).includes(q5));
+  let list6 = SECTION6_PRODUCTS.filter(p=> productSearchText(p).includes(q6));
 
   list1 = sortList(list1, elSort?.value||"featured");
   list2 = sortList(list2, elSort2?.value||"featured");
   list3 = sortList(list3, elSort3?.value||"featured");
   list4 = sortList(list4, elSort4?.value||"featured");
   list5 = sortList(list5, elSort5?.value||"featured");
+  list6 = sortList(list6, elSort6?.value||"featured");
 
   renderShowMoreButton(elShowMore1, list1, "s1");
   renderShowMoreButton(elShowMore2, list2, "s2");
   renderShowMoreButton(elShowMore3, list3, "s3");
   renderShowMoreButton(elShowMore4, list4, "s4");
   renderShowMoreButton(elShowMore5, list5, "s5");
+  renderShowMoreButton(elShowMore6, list6, "s6");
 
   const visibleList1 = sectionExpanded.s1 ? list1 : list1.slice(0, PRODUCT_LIMIT);
   const visibleList2 = sectionExpanded.s2 ? list2 : list2.slice(0, PRODUCT_LIMIT);
   const visibleList3 = sectionExpanded.s3 ? list3 : list3.slice(0, PRODUCT_LIMIT);
   const visibleList4 = sectionExpanded.s4 ? list4 : list4.slice(0, PRODUCT_LIMIT);
   const visibleList5 = sectionExpanded.s5 ? list5 : list5.slice(0, PRODUCT_LIMIT);
+  const visibleList6 = sectionExpanded.s6 ? list6 : list6.slice(0, PRODUCT_LIMIT);
 
   if(elGrid) elGrid.innerHTML = buildCardsHtml(visibleList1, "");
   if(elGrid2) elGrid2.innerHTML = buildCardsHtml(visibleList2, "");
   if(elGrid3) elGrid3.innerHTML = buildCardsHtml(visibleList3, "");
   if(elGrid4) elGrid4.innerHTML = buildCardsHtml(visibleList4, "");
   if(elGrid5) elGrid5.innerHTML = buildCardsHtml(visibleList5, "");
+  if(elGrid6) elGrid6.innerHTML = buildCardsHtml(visibleList6, "");
 
   document.querySelectorAll("[data-prev-gallery]").forEach(btn=>{
     btn.addEventListener("click",()=>{
@@ -995,7 +1053,6 @@ function openProductModal(uniqueId){
   modalDesc.textContent  = p.desc;
   modalQty.textContent   = "1";
   if(modalPersonalization) modalPersonalization.value = "";
-
   modalVars.innerHTML = p.variations.map(varGroup=>`
     <div class="var-group">
       <div class="var-group__label">${varGroup.name}</div>
@@ -1115,11 +1172,14 @@ if(elSearch4) elSearch4.addEventListener("input",()=>{ sectionExpanded.s4 = fals
 if(elSort4) elSort4.addEventListener("change",()=>{ sectionExpanded.s4 = false; renderProducts(); });
 if(elSearch5) elSearch5.addEventListener("input",()=>{ sectionExpanded.s5 = false; renderProducts(); });
 if(elSort5) elSort5.addEventListener("change",()=>{ sectionExpanded.s5 = false; renderProducts(); });
+if(elSearch6) elSearch6.addEventListener("input",()=>{ sectionExpanded.s6 = false; renderProducts(); });
+if(elSort6) elSort6.addEventListener("change",()=>{ sectionExpanded.s6 = false; renderProducts(); });
 if(elShowMore1) elShowMore1.addEventListener("click",()=>{ sectionExpanded.s1 = !sectionExpanded.s1; renderProducts(); });
 if(elShowMore2) elShowMore2.addEventListener("click",()=>{ sectionExpanded.s2 = !sectionExpanded.s2; renderProducts(); });
 if(elShowMore3) elShowMore3.addEventListener("click",()=>{ sectionExpanded.s3 = !sectionExpanded.s3; renderProducts(); });
 if(elShowMore4) elShowMore4.addEventListener("click",()=>{ sectionExpanded.s4 = !sectionExpanded.s4; renderProducts(); });
 if(elShowMore5) elShowMore5.addEventListener("click",()=>{ sectionExpanded.s5 = !sectionExpanded.s5; renderProducts(); });
+if(elShowMore6) elShowMore6.addEventListener("click",()=>{ sectionExpanded.s6 = !sectionExpanded.s6; renderProducts(); });
 elCartNotes.addEventListener("input",()=>{ cartNotes=elCartNotes.value||""; localStorage.setItem("gump_cart_notes",cartNotes); });
 
 if(elApplyCoupon){

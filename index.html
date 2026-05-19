@@ -33,6 +33,7 @@
       </a>
 
       <nav class="nav">
+        <a href="#dia-dos-namorados">Namorados</a>
         <a href="#produtos">Coleções</a>
         <a href="#mais-produtos">Temáticas</a>
         <a href="#modelos-caneca">Modelos</a>
@@ -163,7 +164,30 @@
           <strong>Especial Dia dos Namorados 💘</strong>
           <span>Presentes personalizados com nome, foto ou frase para surpreender quem você ama.</span>
         </div>
-        <a class="btn btn--ghost" href="#produtos">Ver modelos</a>
+        <a class="btn btn--ghost" href="#dia-dos-namorados">Ver modelos</a>
+      </div>
+    </section>
+
+    <section id="dia-dos-namorados" class="section section--namorados">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <h2>Dia dos Namorados 💘</h2>
+            <p class="muted">Canecas românticas personalizadas com foto, data, nome ou frase especial.</p>
+          </div>
+          <div class="filters">
+            <input class="input input--small" id="search6" placeholder="Buscar namorados (ex.: foto, data, casal)"/>
+            <select class="input input--small" id="sort6">
+              <option value="featured">Ordenar: destaque</option>
+              <option value="price-asc">Preço: menor</option>
+              <option value="price-desc">Preço: maior</option>
+              <option value="name-asc">Nome: A–Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid" id="productGrid6"></div>
+        <button class="btn btn--more" id="showMore6" type="button" hidden>Ver mais</button>
       </div>
     </section>
      <section id="modelos-caneca" class="section">
@@ -431,7 +455,14 @@
           <div class="modal-personalization">
             <label class="label" for="modalPersonalization">Personalização deste produto</label>
             <textarea class="input" id="modalPersonalization" rows="3" placeholder="Ex.: Nome, frase, data, cor de fundo ou ideia da arte"></textarea>
-            <small class="small">Se tiver foto, envie pelo WhatsApp após finalizar o pedido.</small>
+
+            <div class="photo-notice" role="note">
+              <span class="photo-notice__icon">📷</span>
+              <div>
+                <strong>Tem fotos para a personalização?</strong>
+                <small>Finalize o pedido e envie as imagens diretamente na conversa do WhatsApp.</small>
+              </div>
+            </div>
           </div>
 
           <div class="modal-qty">

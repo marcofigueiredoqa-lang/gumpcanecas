@@ -1477,3 +1477,55 @@ h3{margin:0 0 8px}
     padding:0;
   }
 }
+
+/* Aviso de envio de fotos pelo WhatsApp */
+.photo-notice{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:12px;
+  border:1px dashed rgba(75,29,138,.35);
+  background:rgba(75,29,138,.04);
+  border-radius:14px;
+  margin-top:4px;
+}
+.photo-notice__icon{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border:1px solid var(--border);
+  flex:0 0 38px;
+  font-size:18px;
+}
+.photo-notice strong{
+  display:block;
+  font-size:13px;
+  color:var(--fg);
+}
+.photo-notice small{
+  display:block;
+  margin-top:2px;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.35;
+}
+@media (max-width: 679px){
+  .photo-notice{padding:10px;}
+}
+
+
+/* Seção Dia dos Namorados */
+.section--namorados{
+  background:linear-gradient(180deg, rgba(255,46,166,.08), rgba(255,255,255,1));
+  border-bottom:1px solid var(--border);
+}
+.section--namorados .section__head h2{
+  color:var(--brand);
+}
+.section--namorados .card{
+  border-color:rgba(255,46,166,.18);
+}
